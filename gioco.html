@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102c48">
+<title>Gioco – Legami & Parole | Merola Giovanni e Palmira Di Marco</title>
+<meta name="author" content="Merola Giovanni e Palmira Di Marco – ITIS S. Cannizzaro, Colleferro (RM)">
+<meta name="description" content="Gioco didattico offline su valenza chimica e grammatica valenziale: 13 missioni, due discipline, limiti delle analogie.">
+<style>
+:root{--navy:#142f4c;--navy2:#244c71;--ink:#23394b;--muted:#617588;--line:#dbe5ee;--paper:#fff;--bg:#f2f6fa;--blue:#146d9b;--purple:#7447a3;--green:#127453;--red:#a8443e;--amber:#a76a17;--shadow:0 12px 32px #183c5710}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.48 system-ui,-apple-system,Segoe UI,Arial,sans-serif}button{font:inherit;cursor:pointer}button:focus-visible,[tabindex]:focus-visible{outline:3px solid #e7a340;outline-offset:3px}button:disabled{cursor:not-allowed;opacity:.48}h1,h2,h3,p{margin-top:0}.shell{max-width:1320px;margin:auto;padding:0 20px}.mast{background:linear-gradient(116deg,#102b48,#194a74 62%,#5e428d);color:white;padding:23px 0 24px}.mast .shell{display:flex;justify-content:space-between;gap:20px;align-items:center}.eyebrow{font-size:.73rem;letter-spacing:.13em;font-weight:850;text-transform:uppercase;color:#c8e3f7}h1{font-size:clamp(1.55rem,2.8vw,2.3rem);letter-spacing:-.03em;line-height:1.14;margin:6px 0}.mast p{margin:5px 0 0;max-width:760px;color:#e8f1f8;font-size:.91rem}.mast-bubble{display:flex;gap:8px;align-items:center;color:#fff;font-size:1.5rem;font-weight:850;white-space:nowrap;opacity:.88}.mast-bubble span{border:1px solid #ffffff55;border-radius:18px;padding:5px 13px;background:#ffffff11}.page{padding-top:16px;padding-bottom:45px}.toolbar{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow)}.toolbar .left{display:flex;gap:11px;align-items:center;flex-wrap:wrap}.missioncount{font-size:.82rem;color:var(--muted);font-weight:780}.stagepill{font-size:.73rem;font-weight:850;border-radius:50px;padding:5px 10px;background:#e8eef7;color:#284e70}.pbar{width:clamp(100px,16vw,210px);height:9px;border-radius:99px;background:#e0eaf2;overflow:hidden}.pfill{height:100%;background:linear-gradient(90deg,#368db5,#248361);width:0;transition:width .25s}.toolbar button,.navrow button,.subbtn{border:1px solid #c7d8e5;background:#fff;color:#31566d;padding:8px 12px;border-radius:10px;font-size:.85rem;font-weight:750}.toolbar button:hover,.navrow button:hover,.subbtn:hover{background:#edf5fb}.toolbar .reset{background:#f6f8fa}.chooser{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.mission-chip{width:auto;min-width:46px;padding:7px 11px;background:#fff;border:1px solid #d3e0ea;border-radius:10px;color:#476478;font-weight:820;font-size:.79rem;display:flex;gap:6px;align-items:center}.mission-chip.active{background:#204f78;color:white;border-color:#204f78}.mission-chip.done:not(.active){background:#e6f6ed;color:#167350;border-color:#a9d4bc}.mission-chip .tiny{font-size:.68rem;opacity:.75}.intro{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:17px 0 13px}.intro h2{font-size:clamp(1.22rem,2vw,1.6rem);margin:0}.intro p{margin:4px 0 0;color:var(--muted);font-size:.9rem}.mode{border-radius:20px;background:#eaf1fb;color:#345b83;padding:7px 12px;font-size:.8rem;font-weight:850}.mode.green{background:#e3f6ec;color:#176d4f}.mode.amber{background:#fff3dd;color:#986112}.mode.red{background:#ffedea;color:#a34038}.mode.ind{background:#f0eafb;color:#694590}.panels{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:15px;align-items:stretch}.panel{min-width:0;background:white;border:1px solid #cddfec;border-radius:19px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}.panel.italian{border-color:#e0d4e9}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 17px;border-bottom:1px solid #e2eaf1;background:#f6fbff;flex-wrap:wrap}.panel.italian .panelhead{background:#fbf6ff;border-color:#ede2f4}.panelhead b{color:#185d87;font-size:1.02rem}.panel.italian .panelhead b{color:#76469b}.state{border-radius:99px;border:1px solid #d6e4ed;background:#fff;font-size:.75rem;font-weight:850;color:#4c697a;padding:4px 9px}.state.edit{color:#7448a0;border-color:#dbcce9}.panelbody{padding:17px;flex:1;display:flex;flex-direction:column;gap:12px}.leadin{font-size:.89rem;color:#4e6a7d;margin:0}.model{background:radial-gradient(ellipse,#fff,#eef6fd);border:1px solid #dae8f4;border-radius:15px;min-height:265px;display:flex;align-items:center;justify-content:center;overflow:hidden}.model svg{width:100%;height:auto;max-height:265px}.chem-title{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.formula{font-weight:900;font-size:1.55rem;color:#254c6b}.chem-info{font-size:.79rem;border-radius:99px;background:#eaf3fc;color:#1d638e;padding:5px 10px;font-weight:850}.legend{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.legenditem{display:inline-flex;gap:6px;align-items:center;border:1px solid #d9e5ee;background:#fff;padding:5px 9px;border-radius:99px;font-size:.79rem;font-weight:750}.atom-small{width:18px;height:18px;border-radius:50%;display:inline-grid;place-items:center;font-size:.52rem;font-weight:900;border:1px solid #b6c6d0}.stats{display:flex;gap:8px;flex-wrap:wrap}.stat{background:#f2f7fa;border:1px solid #deebf3;border-radius:10px;padding:9px 11px;font-size:.82rem}.stat b{font-size:1.03rem;color:#23577a}.grammargraph{background:linear-gradient(165deg,#fff,#fbf5ff);border:1px solid #eaddf1;border-radius:15px;min-height:265px;padding:17px 12px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:13px}.sentence{font-weight:850;text-align:center;font-size:1.08rem;color:#553574;line-height:1.35}.verbnode{background:#7342a1;color:#fff;border-radius:50px;padding:9px 22px;font-weight:900;text-align:center;font-size:1.1rem;min-width:125px}.valverb{background:#f2e9fa;border:1px solid #ddcbea;color:#724b90;font-size:.83rem;font-weight:850;padding:5px 10px;border-radius:30px;margin-top:-6px}.arglist{display:grid;width:100%;grid-template-columns:repeat(var(--n,1),minmax(0,1fr));gap:7px;align-items:start;margin-top:7px}.arg{min-width:0;position:relative;border:1px solid #dcc8ee;background:#f4ebfb;color:#5f4180;border-radius:10px;padding:9px 5px;text-align:center;font-size:.77rem;font-weight:750;overflow-wrap:anywhere}.arg:before{content:'';position:absolute;left:50%;bottom:100%;height:9px;border-left:2px solid #b797d3}.arg small{display:block;font-size:.67rem;color:#826c97;font-weight:700;margin-bottom:2px}.tagline{font-size:.8rem;color:#657d8c}.note{padding:11px 12px;background:#f2f6f9;border:1px solid #e2eaf0;border-radius:12px;font-size:.83rem;color:#4a6579}.note.warning{background:#fff7e7;border-color:#f0d7a6;color:#75531e}.stagebox{border:1px solid #dbe5ee;border-radius:14px;background:#fbfdff;padding:13px 14px}.stagebox h3{font-size:.92rem;color:#31556e;margin:0 0 10px}.stagebox.muted{opacity:.62}.optionrow{display:flex;gap:8px;flex-wrap:wrap}.choice{background:#fff;border:1px solid #c8dce9;color:#284e66;border-radius:11px;padding:9px 11px;font-weight:790}.choice:hover{background:#eaf5fc;border-color:#83b6d5}.choice.selected{background:#dff0fc;border-color:#2d8ac1;box-shadow:inset 0 0 0 1px #2d8ac1}.choice small{display:block;font-size:.73rem;color:#637b8c;font-weight:700;margin-top:3px}.choice.verbchoice{color:#69418a;border-color:#dccae9}.choice.verbchoice:hover{background:#f6ecfc}.choice.verbchoice.selected{background:#f0e2f9;border-color:#9c6cbb}.choicetop{display:flex;gap:8px;align-items:center}.sizedatom{border-radius:100%;display:grid;place-items:center;font-size:.81rem;font-weight:900;flex:none;border:1px solid #c8d9e3}.selectedrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.selectedrow .change{border:0;background:transparent;padding:4px 6px;text-decoration:underline;color:#486b85;font-size:.79rem}.rolegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:7px}.rolebtn{border:1px solid #ddcce9;border-radius:10px;padding:10px;background:#fff;color:#5b3b7a;text-align:left;font-weight:800}.rolebtn.active{background:#ead9f5;border-color:#995dc0}.rolebtn.filled{border-color:#98cbb4}.rolebtn small{display:block;color:#856994;font-weight:650}.rolebtn span{display:block;margin-top:3px}.wordslabel{font-size:.78rem;color:#725885;font-weight:850;margin:8px 0 7px}.preview{border-radius:11px;border:1px dashed #ceb2e1;background:#fcf8ff;padding:11px 13px;font-size:1.02rem;font-weight:800;color:#674285;min-height:50px;overflow-wrap:anywhere}.slots{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:center;padding:8px 0;color:#4c687c;font-weight:720}.socket{cursor:pointer}.socket circle{fill:#fff;stroke:#84b2ce;stroke-width:3;stroke-dasharray:5 4}.socket:hover circle,.socket:focus circle{fill:#dfeffc;stroke:#277fb7}.socket text{fill:#3b88b7;font-size:28px;font-weight:900;pointer-events:none}.atomaction{cursor:pointer}.atomaction:hover circle{stroke:#edb660;stroke-width:4}.bondbar{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.bondbtn{border:1px solid #c3d7e7;background:white;border-radius:9px;padding:7px 15px;font-size:1.17rem;font-weight:900;color:#356988}.bondbtn.selected{border-color:#387ba4;background:#dff1fa}.instruction{font-size:.83rem;color:#5a7487;margin:0}.stagehint{background:#f5faff;border-left:4px solid #70a6c7;border-radius:6px;padding:9px 11px;font-size:.84rem;color:#456a82}.decisionrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:auto}.primary{background:#1779a7;color:#fff;border:1px solid #1779a7;padding:11px 18px;font-weight:850;border-radius:11px}.primary:hover{background:#136791}.primary:disabled{background:#8baaba;border-color:#8baaba}.secondary{background:#fff;border:1px solid #c6d8e5;color:#31586e;padding:10px 15px;font-weight:780;border-radius:11px}.secondary:hover{background:#f0f8fc}.feedback{border-radius:13px;border:1px solid #d4e3ee;padding:12px 14px;font-size:.9rem;color:#35556a;background:#eff6fb}.feedback.good{background:#e8f7ee;border-color:#a8d9c0;color:#155b40}.feedback.bad{background:#fff1ed;border-color:#efb6a9;color:#953e35}.reflection{background:#fff;border:2px solid #c5d9e8;border-radius:16px;padding:17px;margin-top:15px}.reflection h3{font-size:1.05rem;margin-bottom:6px}.refoption{display:block;width:100%;text-align:left;background:#fff;border:1px solid #d7e2ed;border-radius:11px;margin-top:9px;padding:11px 13px;color:#31546d;font-weight:670}.refoption:hover{border-color:#77a6c6;background:#f2f8fb}.refoption.wrong{border-color:#daa4a0;background:#fff1f0}.donepanel{background:#eaf7ef;border:1px solid #b4dec6;border-radius:16px;margin-top:15px;padding:16px 18px;color:#21573f}.donepanel h3{margin:0 0 5px;font-size:1.06rem}.donepanel p{margin:0;font-size:.9rem}.navrow{display:flex;gap:9px;justify-content:space-between;flex-wrap:wrap;margin-top:14px}.teacher{background:#fff;border:1px solid #dbe6ed;padding:13px 16px;border-radius:14px;margin-top:17px}.teacher summary{cursor:pointer;font-weight:850;color:#365f7c}.teacher p{margin:9px 0;color:#536f80;font-size:.86rem}.teacher .twosols{display:grid;grid-template-columns:1fr 1fr;gap:12px}.teacher .sol{background:#f6f9fb;padding:12px;border:1px solid #e1ebf1;border-radius:11px;font-size:.86rem}.footer{margin-top:20px;color:#708291;font-size:.8rem;line-height:1.45}.finish{background:white;border:1px solid #d8e7ed;border-radius:18px;padding:22px;text-align:center;margin-top:17px}.finish h2{font-size:1.4rem;margin:0 0 8px}.hidden{display:none!important}
+@media(max-width:950px){.panels{grid-template-columns:1fr}.model,.grammargraph{min-height:240px}.teacher .twosols{grid-template-columns:1fr}}@media(max-width:540px){.shell{padding:0 10px}.mast{padding:19px 0}.mast-bubble{display:none}.panelbody{padding:12px}.toolbar{padding:12px}.intro{margin-top:14px}.mission-chip{font-size:.7rem;padding:6px 9px}.arg{font-size:.72rem;padding:8px 3px}.arg small{font-size:.61rem}.model svg{max-height:230px}.grammargraph{padding:12px 8px}.footer{font-size:.76rem}}
+</style>
+</head>
+<body>
+<header class="mast"><div class="shell"><div><div class="eyebrow">Laboratorio interattivo • Chimica + Italiano</div><h1>Legami & Parole</h1><p>13 missioni approvate: costruisci una frase partendo da una molecola, poi inverti il percorso. Scopri quando la valenza è un ponte utile e quando il paragone non regge.</p></div><div class="mast-bubble"><span>H—Cl</span><span>≠</span><span>verbo + argomenti</span></div></div></header>
+<div class="shell" style="margin-top:12px"><a href="index.html" style="font-weight:800;color:#245d80;text-decoration:none">← Torna ai materiali del progetto</a></div><main class="shell page"><div class="toolbar"><div class="left"><span class="missioncount" id="progressText">0 di 13 missioni completate</span><div class="pbar" aria-label="Progresso"><div class="pfill" id="progressFill"></div></div><span class="stagepill" id="phaseLabel">Fase 1</span></div><button type="button" id="resetAll" class="reset">↻ Ricomincia il percorso</button></div><nav class="chooser" aria-label="Scegli una missione" id="missionNav"></nav><section class="intro"><div><h2 id="missionTitle"></h2><p id="missionIntro"></p></div><span class="mode" id="modeLabel"></span></section><div class="panels"><section class="panel chemistry" aria-label="Riquadro chimica"><div class="panelhead"><b>⚗ CHIMICA</b><span class="state" id="stateChem"></span></div><div class="panelbody" id="chemContent"></div></section><section class="panel italian" aria-label="Riquadro grammatica"><div class="panelhead"><b>✎ GRAMMATICA VALENZIALE</b><span class="state edit" id="stateGram"></span></div><div class="panelbody" id="gramContent"></div></section></div><div id="afterGame"></div><div class="navrow"><button type="button" id="prevBtn">← Missione precedente</button><div><button type="button" id="restartMission">Ricomincia questa missione</button> <button type="button" id="nextBtn">Missione successiva →</button></div></div><details class="teacher"><summary>Soluzione approvata e nota per il docente (apri solo dopo il tentativo)</summary><div id="teacherContent"></div></details><div class="footer">Tutto funziona offline: nessuna registrazione e nessun dato inviato. Le dimensioni delle sfere seguono una scala visiva non lineare delle masse atomiche e non rappresentano i raggi reali. I disegni mostrano la connettività, non la geometria tridimensionale. La valenza chimica si riferisce alle strutture rappresentate nel modello scolastico.<br><strong>Autori e curatela didattica: Merola Giovanni e Palmira Di Marco – ITIS S. Cannizzaro, Colleferro (RM).</strong><br>Materiale realizzato con il supporto dell’intelligenza artificiale generativa.</div></main>
+<script>
+'use strict';
+const E={
+ H:{name:'Idrogeno',mass:1.008,v:1,color:'#e8eff5',text:'#22394b'},
+ Cl:{name:'Cloro',mass:35.45,v:1,color:'#62bc79',text:'#103f25'},
+ O:{name:'Ossigeno',mass:15.999,v:2,color:'#d95854',text:'#fff'},
+ N:{name:'Azoto',mass:14.007,v:3,color:'#3e7fc4',text:'#fff'},
+ C:{name:'Carbonio',mass:12.011,v:4,color:'#354655',text:'#fff'},
+ Ne:{name:'Neon',mass:20.180,v:0,color:'#9270c6',text:'#fff'}
+};
+// Ogni atomo ha un identificativo e una posizione. Il campo focus individua l'atomo
+// considerato, NON pretende che ogni molecola abbia necessariamente un atomo centrale.
+const cases=[
+ {id:'NE',phase:1,title:'Gas nobile e verbo zerovalente',formula:'Ne',focus:'a',atoms:[['a','Ne',225,103]],bonds:[],center:false,gram:{verb:'piove',phrase:'Piove.',args:[],alts:['Nevica.','Grandina.']},status:'amber',note:'Ne è un gas nobile monoatomico, stabile nelle condizioni ordinarie: nel modello scolastico ha valenza zero. «Piove» è zerovalente: non richiede argomenti. La coincidenza numerica non implica una struttura comune. Alcuni gas nobili possono formare composti (per esempio XeF₆).'},
+ {id:'HCL',phase:1,title:'Un legame semplice tra elementi diversi',formula:'HCl',focus:'a',atoms:[['a','H',148,103],['b','Cl',302,103]],bonds:[['a','b',1]],center:false,gram:{verb:'evapora',phrase:'La soluzione evapora.',args:[['Soggetto','La soluzione']],alts:['La studentessa dorme.','Il tecnico riposa.']},status:'amber',note:'H e Cl presentano entrambi valenza 1 nella struttura H–Cl. Il verbo richiede un argomento. Attenzione: in una molecola biatomica non esiste un atomo centrale equivalente al verbo.'},
+ {id:'H2',phase:1,title:'Due atomi uguali: idrogeno',formula:'H₂',focus:'a',atoms:[['a','H',148,103],['b','H',302,103]],bonds:[['a','b',1]],center:false,gram:{verb:'dorme',phrase:'La studentessa dorme.',args:[['Soggetto','La studentessa']],alts:['La soluzione evapora.','Il tecnico riposa.']},status:'amber',note:'In H–H entrambi gli atomi hanno valenza 1 e sono indistinguibili per elemento. Nella frase si riconosce invece un verbo e il suo argomento: non c’è un «verbo centrale» tra i due atomi.'},
+ {id:'CL2',phase:1,title:'Due atomi uguali: cloro',formula:'Cl₂',focus:'a',atoms:[['a','Cl',148,103],['b','Cl',302,103]],bonds:[['a','b',1]],center:false,gram:{verb:'riposa',phrase:'Il tecnico riposa.',args:[['Soggetto','Il tecnico']],alts:['La studentessa dorme.','La soluzione evapora.']},status:'amber',note:'Cl–Cl è un legame semplice fra due atomi di cloro identici. Ogni cloro ha valenza 1. Il confronto con il verbo monovalente è numerico, non una corrispondenza tra ruoli strutturali.'},
+ {id:'H2O',phase:1,title:'Due legami semplici: acqua',formula:'H₂O',focus:'a',atoms:[['a','O',225,119],['b','H',129,68],['c','H',321,68]],bonds:[['a','b',1],['a','c',1]],center:true,gram:{verb:'osserva',phrase:'La docente osserva il becher.',args:[['Soggetto','La docente'],['Oggetto','il becher']],alts:['Il tecnico pesa il campione.','La studentessa misura la temperatura.']},status:'green',note:'Nell’acqua O forma due legami semplici con due H: valenza 2 e due atomi vicini. «Osserva» richiede due argomenti. Il parallelismo riguarda la struttura a due relazioni, non la natura dei legami.'},
+ {id:'HOCL',phase:1,title:'Tre elementi diversi: acido ipocloroso',formula:'HOCl',focus:'a',atoms:[['a','O',225,119],['b','H',129,68],['c','Cl',321,68]],bonds:[['a','b',1],['a','c',1]],center:true,gram:{verb:'misura',phrase:'Il tecnico misura la temperatura.',args:[['Soggetto','Il tecnico'],['Oggetto','la temperatura']],alts:['La docente osserva il becher.','La studentessa pesa il campione.']},status:'green',note:'La connettività di HOCl è H–O–Cl: l’ossigeno ha valenza 2 e forma due legami semplici. Il verbo «misura» è bivalente nel significato usato.'},
+ {id:'NH3',phase:1,title:'Tre legami semplici: ammoniaca',formula:'NH₃',focus:'a',atoms:[['a','N',225,104],['b','H',125,61],['c','H',325,61],['d','H',225,183]],bonds:[['a','b',1],['a','c',1],['a','d',1]],center:true,gram:{verb:'colloca',phrase:'La studentessa colloca il becher sul banco.',args:[['Soggetto','La studentessa'],['Oggetto','il becher'],['Luogo richiesto','sul banco']],alts:['La docente consegna il campione al tecnico.','Il tecnico mette la provetta sul supporto.']},status:'green',note:'L’azoto in NH₃ forma tre legami semplici, perciò ha valenza 3 nel modello. «Collocare» in questa accezione richiede chi colloca, che cosa viene collocato e dove.'},
+ {id:'NH2CL',phase:1,title:'Un centro e tre legami: monoclorammina',formula:'NH₂Cl',focus:'a',atoms:[['a','N',225,104],['b','H',125,61],['c','H',325,61],['d','Cl',225,181]],bonds:[['a','b',1],['a','c',1],['a','d',1]],center:true,gram:{verb:'consegna',phrase:'Il tecnico consegna il campione alla docente.',args:[['Soggetto','Il tecnico'],['Oggetto','il campione'],['Destinatario','alla docente']],alts:['La studentessa colloca la provetta sul supporto.','La docente consegna il quaderno allo studente.']},status:'green',note:'In NH₂Cl l’azoto forma tre legami semplici con due idrogeni e un cloro: valenza 3. Il verbo «consegna» qui richiede tre argomenti.'},
+ {id:'O2',phase:2,title:'Doppio legame: l’analogia non regge',formula:'O₂',focus:'a',atoms:[['a','O',148,103],['b','O',302,103]],bonds:[['a','b',2]],center:false,gram:{verb:'osserva',phrase:'La docente osserva il modello.',args:[['Soggetto','La docente'],['Oggetto','il modello']],alts:['Il tecnico pesa il campione.']},status:'red',note:'Ogni ossigeno in O=O ha valenza 2, ma un solo atomo vicino. La frase mostrata è grammaticalmente bivalente e viene analizzata in modo indipendente: il doppio legame non equivale a due argomenti.'},
+ {id:'N2',phase:2,title:'Triplo legame: nessun equivalente grammaticale',formula:'N₂',focus:'a',atoms:[['a','N',148,103],['b','N',302,103]],bonds:[['a','b',3]],center:false,gram:{verb:'dorme',phrase:'La studentessa dorme.',args:[['Soggetto','La studentessa']],alts:['Il tecnico riposa.']},status:'red',note:'Ogni azoto in N≡N ha valenza 3, ma un solo atomo vicino. Non esistono tre argomenti perché tre linee collegano gli stessi due atomi. Il verbo è analizzato indipendentemente.'},
+ {id:'CO2',phase:2,title:'CO₂: valenza quattro, due ossigeni',formula:'CO₂',focus:'a',atoms:[['a','C',225,103],['b','O',105,103],['c','O',345,103]],bonds:[['a','b',2],['a','c',2]],center:true,gram:{verb:'colloca',phrase:'La studentessa colloca il becher sul banco.',args:[['Soggetto','La studentessa'],['Oggetto','il becher'],['Luogo richiesto','sul banco']],alts:['Il tecnico consegna il campione alla docente.']},status:'red',note:'Il carbonio in O=C=O forma due doppi legami: valenza 4 pur avendo soltanto due atomi vicini. La frase trivalente è una soluzione linguistica autonoma, non va abbinata né a 2 né a 4 per analogia.'},
+ {id:'CH4',phase:3,title:'Metano: due modelli autonomi',formula:'CH₄',focus:'a',atoms:[['a','C',225,117],['b','H',108,57],['c','H',342,57],['d','H',123,185],['e','H',327,185]],bonds:[['a','b',1],['a','c',1],['a','d',1],['a','e',1]],center:true,gram:{verb:'consegna',phrase:'La docente consegna il campione allo studente.',args:[['Soggetto','La docente'],['Oggetto','il campione'],['Destinatario','allo studente']],alts:['La studentessa colloca il becher sul banco.']},status:'ind',note:'Il carbonio in CH₄ è tetravalente e forma quattro legami semplici. La frase trivalente è corretta indipendentemente dalla molecola. Il gioco non impone un inesistente vincolo numerico fra le due discipline.'},
+ {id:'CH3CL',phase:3,title:'Clorometano: autonomia e confronto',formula:'CH₃Cl',focus:'a',atoms:[['a','C',225,117],['b','H',108,57],['c','H',342,57],['d','H',123,185],['e','Cl',327,185]],bonds:[['a','b',1],['a','c',1],['a','d',1],['a','e',1]],center:true,gram:{verb:'misura',phrase:'Il tecnico misura la temperatura.',args:[['Soggetto','Il tecnico'],['Oggetto','la temperatura']],alts:['La docente osserva il becher.','La studentessa pesa il campione.']},status:'ind',note:'In CH₃Cl il carbonio ha quattro legami semplici (valenza 4) con tre H e un Cl. La frase bivalente è descritta con regole grammaticali proprie, senza cercare una corrispondenza obbligata.'}
+];
+// Le 13 strutture e gli esempi linguistici sono quelli della demo approvata.
+const byId=id=>document.getElementById(id);
+const expectedId=(s)=>s.atoms.find(a=>a[0]===s.focus)[1];
+const valName=['zerovalente','monovalente','bivalente','trivalente','tetravalente'];
+const phases={1:'Primo confronto',2:'Dove l’analogia si rompe',3:'Modelli autonomi'};
+const statusLabel={green:'Confronto utile',amber:'Confronto limitato',red:'Analogia non applicabile',ind:'Modelli autonomi'};
+const verbs={
+ piove:{roles:[],pools:[]},nevica:{roles:[],pools:[]},grandina:{roles:[],pools:[]},
+ evapora:{roles:['Soggetto'],pools:[['La soluzione','L’acqua','Il solvente']]},
+ dorme:{roles:['Soggetto'],pools:[['La studentessa','Il tecnico','La docente']]},
+ riposa:{roles:['Soggetto'],pools:[['Il tecnico','La studentessa','La docente']]},
+ osserva:{roles:['Soggetto','Oggetto'],pools:[['La docente','Il tecnico','La studentessa'],['il becher','il modello','la provetta','il campione']]},
+ misura:{roles:['Soggetto','Oggetto'],pools:[['Il tecnico','La docente','La studentessa'],['la temperatura','il volume','la massa']]},
+ pesa:{roles:['Soggetto','Oggetto'],pools:[['Il tecnico','La docente','La studentessa'],['il campione','il becher','la provetta']]},
+ colloca:{roles:['Soggetto','Oggetto','Luogo richiesto'],pools:[['La studentessa','La docente','Il tecnico'],['il becher','la provetta','il campione'],['sul banco','sul supporto','sul tavolo']]},
+ consegna:{roles:['Soggetto','Oggetto','Destinatario'],pools:[['Il tecnico','La docente','La studentessa'],['il campione','il quaderno','il risultato'],['alla docente','al tecnico','allo studente']]},
+ mette:{roles:['Soggetto','Oggetto','Luogo richiesto'],pools:[['Il tecnico','La docente','La studentessa'],['la provetta','il becher','il campione'],['sul supporto','sul banco','sul tavolo']]}
+};
+const verbCategories=[[...['piove','nevica','grandina']],[...['evapora','dorme','riposa']],[...['osserva','misura','pesa']],[...['colloca','consegna','mette']]];
+const ent=val=>String(val).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const r=s=>13+5.8*Math.log1p(E[s].mass);
+const union=s=>[...new Set(s.atoms.map(a=>a[1]))];
+const optionsForCase=s=>{
+ const needed=[...new Set(s.atoms.filter(a=>a[0]!==s.focus).map(a=>a[1]))];
+ const extra=(['H','Cl','O','N','C'].filter(x=>!needed.includes(x)&&x!==expectedId(s)))[0];
+ return [...new Set([...needed,extra])];
+};
+let index=0;
+let progress=new Set();
+let verb='',argValues=[],activeArg=0;
+let core='',activeAtom='',bondOrder=1,joined={};
+let outcome='',message='',pickedReflection=-1;
+const s=()=>cases[index];
+const direction=()=>index%2===0?'gram':'chem';
+const target=()=>direction();
+const targetV=()=>s().gram.args.length;
+const expectedPositions=()=>s().atoms.filter(a=>a[0]!==s().focus);
+const chemicalPhaseLabel=()=>s().atoms.length<=2?'Primo atomo':'Atomo centrale';
+const isSolved=()=>outcome==='done';
+function clearTask(){verb='';argValues=[];activeArg=0;core='';activeAtom='';bondOrder=1;joined={};outcome='';message='';pickedReflection=-1;}
+function go(i){if(i<0||i>=cases.length)return;index=i;clearTask();render();window.scrollTo({top:0,behavior:'smooth'});}
+function atomInline(sym){const a=E[sym];const size=Math.round(23+1.0*(r(sym)-18));return `<span class="sizedatom" style="width:${size}px;height:${size}px;background:${a.color};color:${a.text};">${ent(sym)}</span>`;}
+function legend(s){return `<div class="legend">${union(s).map(sym=>`<span class="legenditem">${atomInline(sym)} ${sym} · valenza ${E[sym].v}</span>`).join('')}</div>`;}
+function bondSVG(x,y,X,Y,order){const dx=X-x,dy=Y-y,L=Math.hypot(dx,dy)||1;const nx=-dy/L,ny=dx/L;const shifts=order===3?[-6,0,6]:order===2?[-4,4]:[0];return shifts.map(k=>`<line x1="${x+nx*k}" y1="${y+ny*k}" x2="${X+nx*k}" y2="${Y+ny*k}" stroke="#667d8e" stroke-width="3.8" stroke-linecap="round"/>`).join('');}
+function circleSVG(el,x,y,main=false){const a=E[el];return `${main?`<circle cx="${x}" cy="${y}" r="${r(el)+8}" fill="none" stroke="#d9a944" stroke-width="2.5" stroke-dasharray="5 5"/>`:''}<circle cx="${x}" cy="${y}" r="${r(el)}" fill="${a.color}" stroke="#fff" stroke-width="2.5"/><text x="${x}" y="${y+6}" fill="${a.text}" font-size="${el.length>1?18:21}" text-anchor="middle" font-weight="900">${el}</text>`;}
+function chemSVG(model,building=false){
+ const focus=model.atoms.find(a=>a[0]===model.focus);
+ const pts=expectedPositions();let parts='';
+ if(building){
+  if(!core)return `<div class="model" style="min-height:225px"><div class="tagline">Scegli prima ${chemicalPhaseLabel().toLowerCase()}: poi appariranno le posizioni da completare.</div></div>`;
+  for(let k=0;k<pts.length;k++){
+   const [, ,x,y]=pts[k]; const target=joined[k];
+   if(target)parts+=bondSVG(focus[2],focus[3],x,y,target.order);
+  }
+  parts+=circleSVG(core,focus[2],focus[3],true);
+  for(let k=0;k<pts.length;k++){
+   const [, ,x,y]=pts[k];const a=joined[k];
+   if(a)parts+=`<g class="atomaction" data-remove="${k}" role="button" tabindex="0" aria-label="Rimuovi atomo ${a.sym}">${circleSVG(a.sym,x,y)}</g>`;
+   else parts+=`<g class="socket" data-place="${k}" role="button" tabindex="0" aria-label="Collega un atomo nella posizione ${k+1}"><circle cx="${x}" cy="${y}" r="24"/><text x="${x}" y="${y+9}" text-anchor="middle">+</text></g>`;
+  }
+ }else{
+  for(const [a,b,o] of model.bonds){const A=model.atoms.find(t=>t[0]===a),B=model.atoms.find(t=>t[0]===b);parts+=bondSVG(A[2],A[3],B[2],B[3],o);}
+  for(const [id,el,x,y] of model.atoms)parts+=circleSVG(el,x,y,id===model.focus&&model.center);
+ }
+ return `<div class="model"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 240" role="img" aria-label="${ent(building?'Costruzione della formula '+model.formula:'Formula '+model.formula)}">${parts}</svg></div>`;
+}
+function fixedChem(model){
+ const focus=expectedId(model),near=model.bonds.filter(b=>b[0]===model.focus||b[1]===model.focus),orderSum=near.reduce((n,b)=>n+b[2],0);
+ return `<p class="leadin">Osserva la struttura chimica già completa. Guarda quali atomi sono collegati e quanti legami forma quello di riferimento.</p><div class="chem-title"><div class="formula">${ent(model.formula)}</div><span class="chem-info">${model.atoms.length===1?'Gas nobile monoatomico':model.center?'Atomo centrale: '+focus:'Biatomica: nessun atomo centrale'}</span></div>${chemSVG(model)}${legend(model)}<div class="stats"><div class="stat"><b>${E[focus].v}</b> valenza di ${focus}</div><div class="stat"><b>${near.length}</b> atomi vicini</div><div class="stat"><b>${orderSum}</b> legami contati secondo l’ordine</div></div>${model.atoms.length===1?'<div class="note">Il neon è un gas nobile monoatomico, stabile nelle condizioni ordinarie. Valenza zero nel modello scolastico; esistono composti di alcuni gas nobili, per esempio XeF₆.</div>':''}`;
+}
+function fixedGrammar(model){
+ const g=model.gram, n=g.args.length;
+ return `<p class="leadin">Leggi la frase di partenza, osserva il verbo e i suoi argomenti. Poi costruisci la struttura chimica richiesta.</p>${grammarModel(g.verb,g.args.map(a=>a[1]),g.args.map(a=>a[0]),g.phrase)}<div class="note">La valenza verbale si riferisce all’uso del verbo in questa frase. Gli argomenti contribuiscono a formare il nucleo.</div>`;
+}
+function grammarModel(v,args,roles,exact){const n=args.length;const txt=exact|| (n===0?capitalize(v)+'.':`${args[0]||'…'} ${v}${n>1?' '+args.slice(1).join(' '):''}.`);return `<div class="grammargraph"><div class="sentence">«${ent(txt)}»</div><div class="verbnode">${ent(v)}</div><div class="valverb">Valenza verbale = ${n} · ${valName[n]||n}</div>${n?`<div class="arglist" style="--n:${n}">${args.map((arg,i)=>`<div class="arg"><small>Argomento ${i+1}${roles&&roles[i]?' · '+ent(roles[i]):''}</small>${ent(arg)}</div>`).join('')}</div>`:'<div class="tagline">Nessun argomento richiesto</div>'}</div>`;}
+function capitalize(t){return t.charAt(0).toUpperCase()+t.slice(1);}
+function sentencePreview(){if(!verb)return 'Scegli un verbo per iniziare.';const n=verbs[verb].roles.length;if(n===0)return capitalize(verb)+'.';return `${argValues[0]||'_____'} ${verb}${n>1?' '+Array.from({length:n-1},(_,i)=>argValues[i+1]||'_____').join(' '):''}.`;}
+function grammarTarget(model){
+ const expected=targetV();const note=model.phase===1?`Per questa missione cerca un verbo di <b>valenza ${expected}</b>. Non esiste una sola frase corretta.`:`Costruisci autonomamente una frase di <b>valenza ${expected}</b>. Non devi ricavare il numero dalla molecola: l’analogia qui non stabilisce una corrispondenza.`;
+ let html=`<p class="leadin">Crea una frase nucleare con verbo e argomenti compatibili. Sono ammesse molte soluzioni sensate.</p><div class="stagehint">${note}</div><div class="stagebox"><h3>1 · Scegli il verbo</h3>`;
+ if(!verb){html+=`<div class="optionrow">${Object.keys(verbs).map(v=>`<button type="button" class="choice verbchoice" data-verb="${v}">${v}<small>Valenza ${verbs[v].roles.length}</small></button>`).join('')}</div>`;}
+ else html+=`<div class="selectedrow"><div class="verbnode">${verb}</div><div class="valverb" style="margin-top:0">Valenza ${verbs[verb].roles.length}</div><button type="button" class="change subbtn" data-switch-verb>Cambia verbo</button></div>`;
+ html+='</div>';
+ if(!verb)html+='<div class="stagebox muted"><h3>2 · Scegli gli argomenti</h3><p class="instruction">Le parole si abilitano dopo la scelta del verbo.</p></div>';
+ else if(verbs[verb].roles.length===0)html+='<div class="stagebox"><h3>2 · Nessun argomento</h3><p class="instruction">Un verbo meteorologico come «piove» non richiede argomenti.</p></div>';
+ else{
+  const parts=verbs[verb]; const pool=parts.pools[activeArg];
+  html+=`<div class="stagebox"><h3>2 · Completa gli argomenti richiesti</h3><div class="rolegrid">${parts.roles.map((role,i)=>`<button type="button" data-role="${i}" class="rolebtn ${activeArg===i?'active':''} ${argValues[i]?'filled':''}"><small>Argomento ${i+1} · ${role}</small><span>${ent(argValues[i]||'＋ Seleziona')}</span></button>`).join('')}</div><div class="wordslabel">Parole compatibili con: ${ent(parts.roles[activeArg])}</div><div class="optionrow">${pool.map(w=>`<button type="button" class="choice ${argValues[activeArg]===w?'selected':''}" data-word="${ent(w)}">${ent(w)}</button>`).join('')}</div></div>`;
+ }
+ html+=`<div class="preview" aria-live="polite">${ent(sentencePreview())}</div>${message?feedbackHTML():''}<div class="decisionrow"><button type="button" class="primary" data-check ${outcome?'disabled':''}>Verifica la frase</button><button type="button" class="secondary" data-clear>Ricomincia costruzione</button></div>`;
+ return html;
+}
+function atomCounts(model){const a={};for(const [,sym] of model.atoms)a[sym]=(a[sym]||0)+1;return Object.entries(a).map(([sym,n])=>`${sym} × ${n}`).join(' · ');}
+function chemicalTarget(model){
+ const focus=expectedId(model),need=expectedPositions().length;
+ const formulaHint=`Obiettivo: <b>${ent(model.formula)}</b>. Atomi necessari: <b>${atomCounts(model)}</b>. Scegli la connettività e, quando previsto, l’ordine dei legami.`;
+ let html=`<p class="leadin">Costruisci la struttura richiesta, rispettando le valenze e il numero di legami di ogni atomo.</p><div class="stagehint">${formulaHint}</div><div class="stagebox"><h3>1 · ${chemicalPhaseLabel()}</h3>`;
+ if(!core){html+=`<div class="optionrow">${Object.keys(E).map(sym=>`<button type="button" class="choice" data-core="${sym}"><div class="choicetop">${atomInline(sym)} <span>${sym}<small>V = ${E[sym].v}</small></span></div></button>`).join('')}</div>`;}
+ else html+=`<div class="selectedrow">${atomInline(core)} <strong>${core}</strong> <span class="chem-info">Valenza ${E[core].v}</span><button type="button" class="subbtn" data-switch-core>Cambia primo atomo</button></div>`;
+ html+='</div>';
+ if(!core)html+='<div class="stagebox muted"><h3>2 · Atomi da collegare</h3><p class="instruction">Appariranno dopo la scelta del primo atomo.</p></div>';
+ else{
+  html+=`<div class="stagebox"><h3>2 · ${need?'Collega gli atomi':'Nessun atomo da aggiungere'}</h3>`;
+  if(!need)html+='<p class="instruction">Il neon è un gas nobile monoatomico, stabile nelle condizioni ordinarie; nel modello scolastico presenta valenza zero.</p>';
+  else{
+   html+=`<div class="optionrow">${optionsForCase(model).map(sym=>`<button type="button" class="choice ${activeAtom===sym?'selected':''}" data-pick-atom="${sym}">${atomInline(sym)} ${sym} · V${E[sym].v}</button>`).join('')}</div>`;
+   if(model.phase>1||model.bonds.some(b=>b[2]>1))html+=`<div class="bondbar" style="margin-top:10px"><strong>Ordine legame:</strong>${[1,2,3].map(n=>`<button type="button" class="bondbtn ${bondOrder===n?'selected':''}" data-order="${n}" aria-pressed="${bondOrder===n}">${n===1?'—':n===2?'=':'≡'}</button>`).join('')}</div>`;
+   html+=`<p class="instruction" style="margin-top:10px">Seleziona un elemento, scegli l’ordine del legame se necessario e premi <b>+</b> nello schema. Puoi rimuovere un atomo cliccandolo.</p>`;
+  }
+  html+='</div>';
+ }
+ html+=chemSVG(model,true);
+ if(core){
+  const joinedValues=Object.values(joined),total=joinedValues.reduce((sum,o)=>sum+o.order,0);
+  html+=`<div class="stats"><div class="stat"><b>${joinedValues.length}/${need}</b> posizioni completate</div><div class="stat"><b>${total}/${E[core].v}</b> legami dell’atomo scelto</div></div>`;
+  html+=`<div class="legend">${[...new Set([core,...joinedValues.map(t=>t.sym)])].map(sym=>`<span class="legenditem">${atomInline(sym)} ${sym} · V=${E[sym].v}</span>`).join('')}</div>`;
+ }
+ html+=`${message?feedbackHTML():''}<div class="decisionrow"><button type="button" class="primary" data-check ${outcome?'disabled':''}>Verifica la molecola</button><button type="button" class="secondary" data-clear>Ricomincia costruzione</button></div>`;
+ return html;
+}
+function feedbackHTML(){return `<div role="status" class="feedback ${message.startsWith('✓')?'good':'bad'}">${ent(message)}</div>`;}
+function statusNote(model){
+ if(model.status==='green')return 'Il confronto è utile: l’atomo centrale presenta soltanto legami semplici e il numero dei suoi collegamenti coincide con la valenza considerata. Il verbo ha lo stesso numero di argomenti, ma si tratta di relazioni diverse.';
+ if(model.status==='amber')return 'Il confronto è soltanto numerico o limitato: nei biatomici non c’è un vero atomo centrale paragonabile a un verbo; il neon è un gas nobile monoatomico.';
+ if(model.status==='red')return 'I legami multipli mostrano il limite dell’analogia: la valenza chimica comprende l’ordine dei legami, mentre la valenza verbale conta gli argomenti.';
+ return 'Non imponiamo una coincidenza numerica. Il modello chimico e quello grammaticale vengono costruiti e analizzati con criteri propri.';
+}
+function validateGrammar(){
+ if(!verb)return 'Scegli prima un verbo.';
+ if(verbs[verb].roles.length!==targetV())return `Il verbo «${verb}» ha valenza ${verbs[verb].roles.length}, ma qui è richiesta una frase di valenza ${targetV()}. Puoi cambiare verbo.`;
+ if(argValues.some((x,i)=>!verbs[verb].pools[i].includes(x)))return 'Scegli argomenti compatibili con il ruolo indicato.';
+ if(argValues.length!==verbs[verb].roles.length||argValues.some(x=>!x))return 'La frase è incompleta: inserisci tutti gli argomenti richiesti.';
+ return '';
+}
+function validateChem(){
+ if(!core)return 'Scegli prima l’atomo iniziale.';
+ const wanted=expectedId(s());
+ if(core!==wanted)return `Rivedi il primo atomo: per ${s().formula} è richiesto ${wanted}${s().center?' come centro':' come atomo di riferimento'}.`;
+ const needed=expectedPositions().length,vals=Object.values(joined);
+ if(vals.length!==needed)return `Completa tutte le ${needed} posizioni previste.`;
+ const targetEdges=s().bonds.filter(b=>b[0]===s().focus||b[1]===s().focus).map(b=>{
+  const other=b[0]===s().focus?b[1]:b[0];return [s().atoms.find(a=>a[0]===other)[1],b[2]];
+ });
+ const match=es=>es.sort((a,b)=>(a[0]+a[1]).localeCompare(b[0]+b[1]));
+ if(JSON.stringify(match(vals.map(o=>[o.sym,o.order])))!==JSON.stringify(match(targetEdges)))return 'La struttura non corrisponde alla formula proposta: ricontrolla gli atomi presenti e l’ordine dei legami.';
+ const sum=vals.reduce((n,o)=>n+o.order,0);
+ if(sum!==E[core].v)return 'Il numero di legami dell’atomo di riferimento non corrisponde alla valenza richiesta.';
+ for(const o of vals)if(o.order!==E[o.sym].v)return `Controlla la valenza dell’atomo ${o.sym}: in questo modello è ${E[o.sym].v}.`;
+ return '';
+}
+function markSolved(){outcome='done';progress.add(s().id);message='';render();}
+function verify(){
+ if(outcome)return;
+ let error=target()==='gram'?validateGrammar():validateChem();
+ if(error){message=error;render();return;}
+ message='';
+ if(s().phase===1){markSolved();return;}
+ outcome='reflection';render();
+}
+function reflectionView(){const check=s().phase===2;const arr=check?
+ ['La valenza chimica comprende l’ordine dei legami; quella verbale conta gli argomenti del verbo.','Ogni linea del doppio legame equivale a un argomento del verbo.','La valenza chimica coincide sempre con il numero di atomi vicini.']:
+ ['Chimica e grammatica seguono regole proprie: non serve far coincidere le due valenze.','La valenza dell’atomo centrale deve sempre essere uguale a quella del verbo.','Le parole si collegano tra loro grazie agli elettroni.'];
+ return `<section class="reflection" aria-label="Riflessione sull’analogia"><h3>🔍 Sfida finale · Che cosa hai scoperto?</h3><p>${check?'Perché il paragone fra valenza chimica e valenza verbale qui non può essere applicato direttamente?':'Come si devono confrontare i modelli in questa fase?'}</p>${arr.map((a,i)=>`<button type="button" class="refoption ${pickedReflection===i&&i!==0?'wrong':''}" data-ref="${i}">${ent(a)}</button>`).join('')}${pickedReflection>0?'<div class="feedback bad" role="status" style="margin-top:10px">Non proprio: nel modello grammaticale non esistono doppi o tripli argomenti. Riprova.</div>':''}</section>`;
+}
+function afterView(){const model=s();if(outcome==='reflection')return reflectionView();if(outcome==='done')return `<section class="donepanel" role="status"><h3>✓ Missione completata — ${statusLabel[model.status]}</h3><p>${ent(statusNote(model))}</p></section>`;return '';
+}
+function overview(){const model=s();byId('progressText').textContent=`${progress.size} di 13 missioni completate`;byId('progressFill').style.width=(progress.size/13*100)+'%';byId('phaseLabel').textContent=`Fase ${model.phase} · ${phases[model.phase]}`;
+ byId('missionNav').innerHTML=cases.map((m,i)=>`<button type="button" class="mission-chip ${i===index?'active':''} ${progress.has(m.id)?'done':''}" data-jump="${i}" aria-current="${i===index?'step':'false'}"><span>${progress.has(m.id)?'✓':String(i+1).padStart(2,'0')}</span><span class="tiny">${ent(m.formula)}</span></button>`).join('');
+ byId('missionTitle').textContent=`${index+1}. ${model.title}`;
+ byId('missionIntro').textContent=direction()==='gram'?'Da una struttura chimica completa costruisci una frase.':'Da una frase completa costruisci una struttura chimica.';
+ const lab=byId('modeLabel');lab.className='mode '+model.status;lab.textContent='Fase '+model.phase+' · '+(model.phase===1?'Confronta':model.phase===2?'Verifica i limiti':'Analizza separatamente');
+ byId('stateChem').textContent=direction()==='chem'?'DA COSTRUIRE':'MODELLO DI PARTENZA';byId('stateGram').textContent=direction()==='gram'?'DA COSTRUIRE':'MODELLO DI PARTENZA';
+ byId('prevBtn').disabled=index===0;
+ byId('nextBtn').disabled=!isSolved()||index===cases.length-1;
+ byId('nextBtn').textContent=index===cases.length-1?'Percorso concluso':'Missione successiva →';
+}
+function renderTeacher(){const c=s();byId('teacherContent').innerHTML=`<p>Queste sono le soluzioni e le note già approvate nella demo. La frase è un esempio: ogni costruzione grammaticalmente valida con la valenza richiesta viene accettata.</p><div class="twosols"><div class="sol"><b>Chimica:</b> ${ent(c.formula)}. Atomo di riferimento ${expectedId(c)} con valenza ${E[expectedId(c)].v}. Legami: ${c.bonds.map(b=>b[2]===1?'semplice':b[2]===2?'doppio':'triplo').join(', ')||'nessuno'}.</div><div class="sol"><b>Grammatica:</b> ${ent(c.gram.phrase)} <b>Valenza verbale:</b> ${c.gram.args.length}.<br>${c.gram.args.map(a=>ent(a[0]+': '+a[1])).join(' · ')||'Nessun argomento'}.</div></div><p><b>Nota:</b> ${ent(c.note)}</p>`;}
+function render(){
+ overview();const model=s();byId('chemContent').innerHTML=direction()==='chem'?chemicalTarget(model):fixedChem(model);byId('gramContent').innerHTML=direction()==='gram'?grammarTarget(model):fixedGrammar(model);byId('afterGame').innerHTML=afterView();renderTeacher();byId('nextBtn').disabled=!isSolved()||index===cases.length-1;
+ if(progress.size===cases.length&&isSolved())byId('afterGame').insertAdjacentHTML('beforeend','<div class="finish"><h2>🏁 Tutte le 13 missioni completate</h2><p>Hai imparato a riconoscere sia le potenzialità dell’analogia sia i suoi limiti. Non è necessario che i due sistemi seguano sempre le stesse regole.</p></div>');
+}
+function clearOnly(){clearTask();render();}
+function placeAtom(k){if(!core||!activeAtom){message='Scegli un elemento dalla tavolozza prima di premere +.';render();return;}
+ if(joined[k])return;
+ if(bondOrder>E[activeAtom].v){message=`L’elemento ${activeAtom} ha valenza ${E[activeAtom].v}: non puoi collegarlo con un legame di ordine ${bondOrder} in questa attività.`;render();return;}
+ const current=Object.values(joined).reduce((t,a)=>t+a.order,0);
+ if(current+bondOrder>E[core].v){message=`Supereresti la valenza ${E[core].v} dell’atomo ${core}. Prova a cambiare il primo atomo oppure l’ordine dei legami.`;render();return;}
+ joined[k]={sym:activeAtom,order:bondOrder};message='';render();
+}
+function doAction(el){
+ if(!el)return;const d=el.dataset;
+ if('jump' in d){go(Number(d.jump));return;}
+ if('ref' in d){pickedReflection=Number(d.ref);if(pickedReflection===0)markSolved();else render();return;}
+ if(outcome)return;
+ if('verb' in d){verb=d.verb;argValues=Array(verbs[verb].roles.length).fill('');activeArg=0;message='';render();return;}
+ if('switchVerb' in d){verb='';argValues=[];activeArg=0;message='';render();return;}
+ if('role' in d){activeArg=Number(d.role);message='';render();return;}
+ if('word' in d){argValues[activeArg]=d.word;message='';const n=verbs[verb].roles.length;if(argValues[activeArg]&&activeArg<n-1)activeArg++;render();return;}
+ if('core' in d){core=d.core;joined={};activeAtom='';bondOrder=1;message='';render();return;}
+ if('switchCore' in d){core='';joined={};activeAtom='';bondOrder=1;message='';render();return;}
+ if('pickAtom' in d){activeAtom=d.pickAtom;message='';render();return;}
+ if('order' in d){bondOrder=Number(d.order);message='';render();return;}
+ if('place' in d){placeAtom(Number(d.place));return;}
+ if('remove' in d){delete joined[Number(d.remove)];message='';render();return;}
+ if('check' in d){verify();return;}
+ if('clear' in d){clearOnly();return;}
+ if('ref' in d){pickedReflection=Number(d.ref);if(pickedReflection===0)markSolved();else render();return;}
+}
+document.addEventListener('click',ev=>{const node=ev.target.closest('[data-jump],[data-verb],[data-switch-verb],[data-role],[data-word],[data-core],[data-switch-core],[data-pick-atom],[data-order],[data-place],[data-remove],[data-check],[data-clear],[data-ref]');if(node)doAction(node);});
+document.addEventListener('keydown',ev=>{if((ev.key==='Enter'||ev.key===' ')&&ev.target.closest('[data-place],[data-remove]')){ev.preventDefault();doAction(ev.target.closest('[data-place],[data-remove]'));}});
+byId('resetAll').addEventListener('click',()=>{if(window.confirm('Ricominciare il percorso e azzerare i progressi di questa sessione?')){progress=new Set();go(0);}});
+byId('restartMission').addEventListener('click',clearOnly);
+byId('prevBtn').addEventListener('click',()=>go(index-1));
+byId('nextBtn').addEventListener('click',()=>{if(isSolved())go(index+1);});
+render();
+</script>
+</body>
+</html>
