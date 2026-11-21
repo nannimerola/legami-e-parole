@@ -65,11 +65,24 @@ const verbCategories=[[...['piove','nevica','grandina']],[...['evapora','dorme',
 const ent=val=>String(val).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const r=s=>13+5.8*Math.log1p(E[s].mass);
 const union=s=>[...new Set(s.atoms.map(a=>a[1]))];
+// Due alternative non richieste per esercitare l'osservazione senza affollare la tavolozza.
 const optionsForCase=s=>{
  const needed=[...new Set(s.atoms.filter(a=>a[0]!==s.focus).map(a=>a[1]))];
- const extra=(['H','Cl','O','N','C'].filter(x=>!needed.includes(x)&&x!==expectedId(s)))[0];
- return [...new Set([...needed,extra])];
+ const extras=['O','N','Cl','C','H'].filter(x=>!needed.includes(x)&&x!==expectedId(s)).slice(0,2);
+ return [...new Set(needed.length===1?[extras[0],needed[0],extras[1]]:needed.length===2?[needed[0],extras[0],needed[1],extras[1]]:[...needed,...extras])].filter(Boolean);
 };
+// Le parole scorrette sono incompatibili con la funzione richiesta:
+// per esempio 'sul banco' non è soggetto; 'alla docente' non è oggetto diretto.
+const wordDistractors={
+ 'Soggetto':['sul banco','alla docente'],
+ 'Oggetto':['sul banco','alla docente'],
+ 'Luogo richiesto':['il becher','alla docente'],
+ 'Destinatario':['sul banco','il becher']
+};
+function optionsForRole(role,pool){
+ const wrong=(wordDistractors[role]||[]).filter(w=>!pool.includes(w)).slice(0,2);
+ return [...new Set([pool[0],wrong[0],pool[1],wrong[1],...pool.slice(2)])].filter(Boolean);
+}
 let index=0;
 let progress=new Set();
 let verb='',argValues=[],activeArg=0;
@@ -130,7 +143,7 @@ function grammarTarget(model){
  else if(verbs[verb].roles.length===0)html+='<div class="stagebox"><h3>2 · Nessun argomento</h3><p class="instruction">Un verbo meteorologico come «piove» non richiede argomenti.</p></div>';
  else{
   const parts=verbs[verb]; const pool=parts.pools[activeArg];
-  html+=`<div class="stagebox"><h3>2 · Completa gli argomenti richiesti</h3><div class="rolegrid">${parts.roles.map((role,i)=>`<button type="button" data-role="${i}" class="rolebtn ${activeArg===i?'active':''} ${argValues[i]?'filled':''}"><small>Argomento ${i+1} · ${role}</small><span>${ent(argValues[i]||'＋ Seleziona')}</span></button>`).join('')}</div><div class="wordslabel">Parole compatibili con: ${ent(parts.roles[activeArg])}</div><div class="optionrow">${pool.map(w=>`<button type="button" class="choice ${argValues[activeArg]===w?'selected':''}" data-word="${ent(w)}">${ent(w)}</button>`).join('')}</div></div>`;
+  html+=`<div class="stagebox"><h3>2 · Completa gli argomenti richiesti</h3><div class="rolegrid">${parts.roles.map((role,i)=>`<button type="button" data-role="${i}" class="rolebtn ${activeArg===i?'active':''} ${argValues[i]?'filled':''}"><small>Argomento ${i+1} · ${role}</small><span>${ent(argValues[i]||'＋ Seleziona')}</span></button>`).join('')}</div><div class="wordslabel">Scegli una parola per: ${ent(parts.roles[activeArg])}. Attenzione: non tutte le alternative sono adatte.</div><div class="optionrow">${optionsForRole(parts.roles[activeArg],pool).map(w=>`<button type="button" class="choice ${argValues[activeArg]===w?'selected':''}" data-word="${ent(w)}">${ent(w)}</button>`).join('')}</div></div>`;
  }
  html+=`<div class="preview" aria-live="polite">${ent(sentencePreview())}</div>${message?feedbackHTML():''}<div class="decisionrow"><button type="button" class="primary" data-check ${outcome?'disabled':''}>Verifica la frase</button><button type="button" class="secondary" data-clear>Ricomincia costruzione</button></div>`;
  return html;
@@ -139,7 +152,7 @@ function atomCounts(model){const a={};for(const [,sym] of model.atoms)a[sym]=(a[
 function chemicalTarget(model){
  const focus=expectedId(model),need=expectedPositions().length;
  const formulaHint=`Obiettivo: <b>${ent(model.formula)}</b>. Atomi necessari: <b>${atomCounts(model)}</b>. Scegli la connettività e, quando previsto, l’ordine dei legami.`;
- let html=`<p class="leadin">Costruisci la struttura richiesta, rispettando le valenze e il numero di legami di ogni atomo.</p><div class="stagehint">${formulaHint}</div><div class="stagebox"><h3>1 · ${chemicalPhaseLabel()}</h3>`;
+ let html=`<p class="leadin">Costruisci la struttura richiesta scegliendo con attenzione: alcune alternative non sono adatte. Rispetta la formula e le valenze.</p><div class="stagehint">${formulaHint}</div><div class="stagebox"><h3>1 · ${chemicalPhaseLabel()}</h3>`;
  if(!core){html+=`<div class="optionrow">${Object.keys(E).map(sym=>`<button type="button" class="choice" data-core="${sym}"><div class="choicetop">${atomInline(sym)} <span>${sym}<small>V = ${E[sym].v}</small></span></div></button>`).join('')}</div>`;}
  else html+=`<div class="selectedrow">${atomInline(core)} <strong>${core}</strong> <span class="chem-info">Valenza ${E[core].v}</span><button type="button" class="subbtn" data-switch-core>Cambia primo atomo</button></div>`;
  html+='</div>';
@@ -173,7 +186,8 @@ function statusNote(model){
 function validateGrammar(){
  if(!verb)return 'Scegli prima un verbo.';
  if(verbs[verb].roles.length!==targetV())return `Il verbo «${verb}» ha valenza ${verbs[verb].roles.length}, ma qui è richiesta una frase di valenza ${targetV()}. Puoi cambiare verbo.`;
- if(argValues.some((x,i)=>!verbs[verb].pools[i].includes(x)))return 'Scegli argomenti compatibili con il ruolo indicato.';
+ const wrong=argValues.findIndex((x,i)=>x&&!verbs[verb].pools[i].includes(x));
+ if(wrong>=0)return `«${argValues[wrong]}» non è adatto al ruolo «${verbs[verb].roles[wrong]}» in questa frase. Prova un'altra alternativa.`;
  if(argValues.length!==verbs[verb].roles.length||argValues.some(x=>!x))return 'La frase è incompleta: inserisci tutti gli argomenti richiesti.';
  return '';
 }
